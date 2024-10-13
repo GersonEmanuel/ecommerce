@@ -6,8 +6,21 @@
     <title>{{title}}</title>
   </head>
   <body>
-    <h1>{{content}}</h1>
-    <h1>working</h1>
+    <div class='container'>
+      <div class='row'>
+          <div class='col'>
+              <p>{{ content }}</p>
+              <div class='col-sm-6 col-12'>
+              <form method='POST'> {% csrf_token %}
+                  <input type='text' class='form-control' name='fullname 'placeholder='Tell us your full name'>
+                  <input type='email' class='form-control' name='email' placeholder='Input your email'>
+                  <textarea name='content' class='form-control' placeholder='Talk to us'></textarea>
+                  <button type='submit' class='btn btn-default'>Enviar</button>
+              </form>
+              </div>
+          </div>
+      </div>
+    </div>
     <a href="{%url 'home'%}">principal page</a>
     <a href="{%url 'about'%}">about page</a>
     

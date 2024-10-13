@@ -15,7 +15,8 @@ def contact_page(request):
     contact_form = ContactForm(request.POST or None)
     context = {'title': 'contact page', 'content':'Welcome contact page',
                'form': contact_form }
-    if request.method == 'POST':
-        print(request.POST)
+    if contact_form.is_valid():
+        print(contact_form.cleaned_data)
     
     return render(request, 'contact_page.html', context)
+

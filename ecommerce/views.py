@@ -6,7 +6,7 @@ from .forms import *
 def home_page(request):
     context={'title': 'pricipal page', 'content':'principal'}
     if request.user.is_authenticated:
-        context['content'] = 'you are a premium user' 
+        context['premium_content'] = 'you are a premium user' 
     return render(request, 'index.html', context)
 
 def about_page(request):

@@ -10,7 +10,7 @@ class ProductListView(ListView):
     template_name = 'products/list.html'
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        return super(ProductListView).get_context_data(**kwargs)
+        return super().get_context_data(**kwargs)
 
 #def product_list_view(request):
 #   queryset = Product.objects.all()

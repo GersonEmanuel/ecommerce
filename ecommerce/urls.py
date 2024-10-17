@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from products.views import ProductListView
+from products.views import ProductListView, ProductDetailView
 from .views import *
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     path('login/', login_page, name='login'),
     path('register/', register_page, name='register'),
     path('products', ProductListView.as_view()),
+    path('products/<int:pk>', ProductDetailView.as_view()),
 ]
 
 if settings.DEBUG:

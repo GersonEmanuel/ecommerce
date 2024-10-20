@@ -21,8 +21,8 @@ class ProductDetailView(DetailView):
     queryset = Product.objects.all()
     template_name = 'productst/detail.html'
 
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        return super().get_context_data(**kwargs)
+    #def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        #return super().get_context_data(**kwargs)
     
 
 #Function Based View

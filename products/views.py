@@ -7,7 +7,7 @@ from .models import Product
 
 class ProductListView(ListView):
     queryset = Product.objects.all()
-    template_name = 'products/list.html'
+    template_name = 'productst/list.html'
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         return super().get_context_data(**kwargs)
@@ -19,7 +19,7 @@ class ProductListView(ListView):
 
 class ProductDetailView(DetailView):
     queryset = Product.objects.all()
-    template_name = 'products/detail.html'
+    template_name = 'productst/detail.html'
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         return super().get_context_data(**kwargs)

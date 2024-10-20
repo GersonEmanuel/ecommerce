@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.urls import path
-from products.views import ProductListView, ProductDetailView
+from products.views import *
 from .views import *
 
 urlpatterns = [
@@ -11,6 +11,8 @@ urlpatterns = [
     path('register/', register_page, name='register'),
     path('products', ProductListView.as_view()),
     path('products/<int:pk>', ProductDetailView.as_view()),
+    path('featured/', ProductFeaturedListView.as_view(), name = 'featuredlistview'),
+    path('featured/<int:pk>/', ProductFeaturedDetailView.as_view(), name='featureddetailview')
 ]
 
 

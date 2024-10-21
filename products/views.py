@@ -1,9 +1,10 @@
 from typing import Any
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 from django.views.generic import ListView, DetailView
-from .models import Product
+from .models import *
 
 # Create your views here.
 
@@ -37,15 +38,15 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         return super().get_context_data(**kwargs)
     
-    def get_object(self, queryset: QuerySet[Any] | None = ...) -> Model:
-        return super().get_object(queryset)
+    #def get_object(self, queryset: QuerySet[Any] | None = ...) #-> Model:
+        #return super().get_object(queryset)
     
-    #def get_object(self, *args, **kwargs):
-        #pk = self.kwargs.get('pk')
-        #instance = Product.objects.get_by_id(pk)
-       # if instance is None:
-         #   raise Http404("Esse produto não existe!")
-        #return instance
+    def get_object(self, *args, **kwargs):
+        pk = self.kwargs.get('pk')
+        instance = Product.objects.get_by_id(pk)
+        if instance is None:
+           raise Http404("This product does not exist")
+        return instance
     
 
 #Function Based View

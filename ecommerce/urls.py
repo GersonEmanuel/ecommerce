@@ -9,8 +9,6 @@ urlpatterns = [
     path('contactpage/', contact_page, name= 'contact' ),
     path('login/', login_page, name='login'),
     path('register/', register_page, name='register'),
-    path('products', ProductListView.as_view()),
-    path('products/<int:pk>', ProductDetailView.as_view()),
     path('featured/', ProductFeaturedListView.as_view(), name = 'featuredlistview'),
     path('featured/<int:pk>/', ProductFeaturedDetailView.as_view(), name='featureddetailview'),
     path('products/<slug:slug>/', ProductDetailSlugView.as_view(),)

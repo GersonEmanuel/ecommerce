@@ -1,16 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{title}}</title>
-  </head>
-  <body>
-    <h1>{{content}}</h1>
-    <h2>working</h2>
-    <a href =  "{%url 'home' %}">principal page</a>
+{%extends 'base/base.html'%}
+{%block content%}
+  <h1>{{content}}</h1>
+  <h2>working</h2>
+  <a href =  "{%url 'home' %}">principal page</a>
 
-    <a href="{%url 'contact' %}">contact page</a>
-    
-  </body>
-</html>
+  <a href="{%url 'contact' %}">contact page</a>
+{%endblock%}
+

@@ -1,9 +1,15 @@
-
-{%extends 'basef/base.html'%}
-{%block content %}
-    {{object.title}} <br/>
-    {{object.description|linebreaks}} <br/>
-    {% if object.image  %}
-        <img src="{{ object.image.url}}" class ='img-fluid'/>
-    {% endif %}
-{%endblock content%}
+{% extends "base.html" %}
+{% block content %}
+<div class='container'>
+    <div class='row'>
+        <div class='col'>
+            <h1>{{ object.title }}</h1>
+            <h3>{{ "SS"|title }}</h3>
+            {{ object.description|linebreaks }} <br/>
+            {% if object.image %}
+                <img src='{{ object.image.url }}' class='img-fluid'/>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

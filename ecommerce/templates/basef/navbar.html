@@ -6,19 +6,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{%url 'home'%}">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contacts</a>
+          <a class="nav-link" href="{%url 'contact'%}">Contacts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Products</a>
+          <a class="nav-link" href="{%url 'products:list'%}">Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign-in</a>
+          <a class="nav-link" href="{%url 'login'%}">Sign-in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign_up</a>
+          <a class="nav-link" href="{%url 'register'%}">Sign_up</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">

@@ -8,7 +8,7 @@
         {% include "basef\css.html" %}
     </head>
     <body>
-        {%include 'basef/navbar.html'%}
+        {%include 'basef/navbar.html' with brand_name='Gecommerce'%}
         {%block content%} {%endblock%}
         {%include 'basef/js.html'%}
 		

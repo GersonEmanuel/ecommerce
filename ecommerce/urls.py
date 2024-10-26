@@ -11,7 +11,7 @@ urlpatterns = [
     path('register/', register_page, name='register'),
     path('featured/', ProductFeaturedListView.as_view(), name = 'featuredlistview'),
     path('featured/<int:pk>/', ProductFeaturedDetailView.as_view(), name='featureddetailview'),
-    path('products/<slug:slug>/', ProductDetailSlugView.as_view(),)
+    path('products/<slug:slug>/', ProductDetailSlugView.as_view(), name= 'detailslug')
 ]
 
 

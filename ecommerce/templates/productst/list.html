@@ -1,7 +1,12 @@
 {%extends 'basef/base.html'%}
 {%block content%}
-	{% for obj in object_list %}
-	{%include 'productst/snippets/cards.html' with instance=obj%}
-		<a href='{{ obj.get_absolute_url }}'>{{ obj.title }}</a><br/>
-	{% endfor%}
+	<div class='container'>
+	<div class='row'>
+		{% for obj in object_list %}
+		<div class='col'>
+			{%include 'productst/snippets/cards.html' with instance=obj%}
+		</div>
+		{% endfor%}
+	</div>
+	</div>
 {%endblock content%}

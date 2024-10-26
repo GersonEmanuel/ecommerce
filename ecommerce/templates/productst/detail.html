@@ -4,6 +4,7 @@
     <div class='row'>
         <div class='col'>
             <h1>{{ object.title }}</h1>
+            {{object.timestamp|timesince}} ago
             <h3>{{ "SS"|title }}</h3>
             {{ object.description|linebreaks }} <br/>
             {% if object.image %}

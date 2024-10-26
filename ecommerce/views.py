@@ -25,19 +25,14 @@ def contact_page(request):
 def login_page(request):
     form = LoginForms(request.POST or None)
     context = {'form': form}
-    print('user logged in')
     if form.is_valid():
         print(form.cleaned_data)
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password) 
-        print(user)
     if user is not None:
         login(request, user)
-        print("Login válido")
         return redirect('')
-    else:
-        print('invalid login')
     return render(request, 'auth/login.html', context)
 
 User = get_user_model()

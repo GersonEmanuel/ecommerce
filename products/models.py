@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Q
 from .utils import unique_slug_generator
 from django.db.models.signals import pre_save
 from django.urls import reverse
@@ -20,6 +21,10 @@ class ProductManager(models.Manager):
     
     def featured(self):
         return self.get_queryset().featured()
+    
+    def search(self, query):
+        lookups = Q(title__contains = query) | Q(description__contains = query)
+        return self.filter(lookups).distinct()
     
 
     def get_by_id(self, id):

@@ -38,9 +38,10 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError('this email is already register')
         return email
     
-    def clean_confirm_password(self):
+    def clean(self):
+        data = self.cleaned_data
         password = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('password2')
         if password != password2:
             raise forms.ValidationError('the passwords should be equals')
-        return password
+        return data

@@ -31,9 +31,9 @@ def login_page(request):
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password) 
-    if user is not None:
-        login(request, user)
-        return redirect('')
+        if user is not None:
+            login(request, user)
+            return redirect('home')
     return render(request, 'auth/login.html', context)
 
 def logout_page(request):
@@ -50,11 +50,10 @@ def register_page(request):
             "form": form
               }
     if form.is_valid():
-        User = get_user_model()
         username = form.clean_username()
-        email = form.clean_email
-        password = form.clean_confirm_password()
-        new_user = User.objects.create_user(username,email,password)
+        email = form.clean_email()
+        password = form.cleaned_data.get('password')
+        new_user = User.objects.create_user(username=username,email=email,password=password)
         print(new_user)
         return redirect('home')
     return render(request, "auth/register.html", context)

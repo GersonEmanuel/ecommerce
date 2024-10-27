@@ -24,7 +24,14 @@ class CartManager(models.Manager):
                 request.session['cart_id'] = cart_obj.id
             return cart_obj, new_obj
         
-        
+    def new(self, user=None):
+        user_obj = None
+        if user is not None:
+            if user.is_authenticate:
+                user_obj = user
+        return self.model.objects.creaate(user = user_obj)
+    
+    
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null = True, blank = True)
     products = models.ManyToManyField(Product, blank = True)

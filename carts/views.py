@@ -8,7 +8,13 @@ def cart_home(request):
     return render(request, 'carts/home.html', {})
 
 def cart_update(request):
-    product_id = 5
+    product_id = request.POST.get('product_id')
+    if product_id is not None:
+        try:
+            product_obj = Product.objects.get(id = product_id)
+        except Product.DoesNotExist:
+            return redirect("cart:home")
+
     product_obj = Product.objects.get(id=product_id)
     cart_obj, new_obj = Cart.objects.new_or_get(request)
     cart_obj.products.add(product_obj)

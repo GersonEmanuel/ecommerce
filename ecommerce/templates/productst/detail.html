@@ -15,9 +15,9 @@
     <div class='col-12 col-md-6'>
       {{ cart }}
       {% if object in cart.products.all %}
-      product in cart
+      Product in cart<button class='btn btn-link'>Excluir</button>
       {% else %}
-      add to cart
+      <button class='btn btn-success'>Add to the cart</button>
       {% endif %}
     </div>
   </div>

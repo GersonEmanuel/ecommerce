@@ -33,6 +33,9 @@ class ProductManager(models.Manager):
             return qs.first()
         return None
     
+    def search(self, query):
+        return self.get_queryset().active().search(query)
+    
 # Create your models here.
 class Product(models.Model):
     title = models.CharField(max_length=100)

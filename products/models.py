@@ -13,7 +13,7 @@ class ProductQuerySet(models.query.QuerySet):
         return self.filter(active = True, featured = True)
     
     def search(self, query):
-        lookups = (Q(title__contains = query) | Q(description__contains = query)| Q(price__contains = query))
+        lookups = (Q(title__contains = query) | Q(description__contains = query)| Q(price__contains = query)| Q(tag__title__icontains=query))
         return self.filter(lookups).distinct()
     
 

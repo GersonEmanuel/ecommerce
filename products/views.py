@@ -62,8 +62,8 @@ class ProductDetailSlugView(DetailView):
     queryset = Product.objects.all()
     template_name = 'productst/detail.html'
 
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-        context = super(ProductDetailSlugView, self). get_context_data(self, **kwargs)
+    def get_context_data(self, *args, **kwargs: Any):
+        context = super(self, ProductDetailSlugView).get_context_data(self, *args, **kwargs)
         cart_obj, new_obj = Cart.objects.new_or_get(self.request)
         context['cart'] = cart_obj
         return context

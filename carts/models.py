@@ -18,11 +18,11 @@ class CartManager(models.Manager):
             if request.user.is_authenticate and cart_obj.user is None:
                 cart_obj.user = request.user
                 cart_obj.save()
-            else:
-                cart_obj = Cart.objects.new(user = request.user)
-                new_obj = True
-                request.session['cart_id'] = cart_obj.id
-            return cart_obj, new_obj
+        else:
+            cart_obj = Cart.objects.new(user = request.user)
+            new_obj = True
+            request.session['cart_id'] = cart_obj.id
+        return cart_obj, new_obj
         
     def new(self, user=None):
         user_obj = None

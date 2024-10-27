@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "basef/base.html" %}
 {% block content %}
     <div class='row mb-3'>
     {% if query %}
@@ -8,7 +8,7 @@
     </div>
     {% else %}
     <div class='col-12 col-md-8 mx-auto py-5'>
-        {% include 'search/snippets/search-form.html' %}
+        {% include 'search/snippets/searchform.html' %}
     </div>
     <div class='col-12'>
         <hr>

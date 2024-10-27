@@ -11,6 +11,11 @@ class ProductQuerySet(models.query.QuerySet):
     
     def featured(self):
         return self.filter(active = True, featured = True)
+    
+    def search(self, query):
+        lookups = (Q(title__contains = query) | Q(description__contains = query)| Q(price__contains = query))
+        return self.filter(lookups).distinct()
+    
 
 class ProductManager(models.Manager):
     def get_queryset(self):
@@ -21,10 +26,6 @@ class ProductManager(models.Manager):
     
     def featured(self):
         return self.get_queryset().featured()
-    
-    def search(self, query):
-        lookups = (Q(title__contains = query) | Q(description__contains = query)| Q(price__contains = query))
-        return self.filter(lookups).distinct()
     
 
     def get_by_id(self, id):

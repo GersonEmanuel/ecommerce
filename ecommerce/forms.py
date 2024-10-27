@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 
 user = get_user_model()
 class ContactForm(forms.Form):
@@ -37,8 +38,7 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError('this email is already register')
         return email
     
-    def clean(self):
-        data = self.cleaned_data
+    def clean_confirm_password(self):
         password = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('password2')
         if password != password2:

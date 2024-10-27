@@ -30,9 +30,9 @@ def login_page(request):
         username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password) 
-    if user is not None:
-        login(request, user)
-        return redirect('')
+        if user is not None:
+            login(request, user)
+            return redirect('')
     return render(request, 'auth/login.html', context)
 
 def logout_page(request):

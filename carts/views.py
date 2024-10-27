@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .models import Cart
 
 # Create your views here.
 def cart_home(request):
+    cart_obj = Cart.objects.new_or_get(request)
     cart_id = request.session.get("cart_id", None)
     if cart_id is None:
         print('create new cart')

@@ -14,8 +14,8 @@
       <tbody>
         {% for product in cart.products.all %}
         <tr>
-          <thscope="row">{{ forloop.counter }}</th>
-          <td><a href='{{ product.get_absolute_url }}'>{{ product.title }}</a><small><a href='#'>Want to remove?</a></small></td>
+            <a href='{{ product.get_absolute_url }}'>{{ product.title }}</a>
+            {% include 'products/snippets/update-cart.html' with product=product cart=cart in_cart=True %}</td>
           <td>{{ product.price }}</td>
         </tr>
         {% endfor %}

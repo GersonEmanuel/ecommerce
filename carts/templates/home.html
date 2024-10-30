@@ -8,14 +8,14 @@
         <tr>
           <th>#</th>
           <th> product name</th>
-          <th> product price</th>
+          <th>product price</th>
         </tr>
       </thead>
       <tbody>
         {% for product in cart.products.all %}
         <tr>
-            <a href='{{ product.get_absolute_url }}'>{{ product.title }}</a>
-            {% include 'productst/snippets/update-cart.html' with product=product cart=cart in_cart=True %}</td>
+          <thscope="row">{{ forloop.counter }}</th>
+          <td><a href='{{ product.get_absolute_url }}'>{{ product.title }}</a><small><a href='#'>Want to remove?</a></small></td>
           <td>{{ product.price }}</td>
         </tr>
         {% endfor %}
@@ -30,6 +30,6 @@
       </tbody>
     </table>
   {% else %}
-    <p class='lead'>Empty</p>
+    <p class='lead'>Empty cart</p>
   {% endif %}
 {% endblock %}

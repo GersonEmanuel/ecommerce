@@ -4,6 +4,7 @@
 {% url 'login' as login_url %}
 {% url 'register' as register_url %}
 {%url 'logout' as logout_url %}
+{%url 'cart:home' as cart_url%}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="{{ home_url }}">{% if branch_name %} {{ branch_name}} {% else %} GEcommerce {% endif %}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +33,19 @@
         <a class="nav-link" href="{{ register_url }}">Sign-up</a> 
       </li>
     {% endif %}
+    <li class="nav-item {% if request.path == cart_url %} active {% endif %}">
+      <a class="nav-link" href="{{ cart_url }}">Cart</a>
+    </li>
+    <!-- <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown link
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li> -->
     </ul>
     {%include 'search/snippets/searchform.html'%}
   </div>

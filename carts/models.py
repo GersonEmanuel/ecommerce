@@ -42,16 +42,17 @@ class Cart(models.Model):
     timestamp = models.DateTimeField(auto_now_add = True)
     objects = CartManager()
 
+
     def __str__(self):
         return str(self.id)
-    
+
+
 def m2m_changed_cart_receiver(sender,instance,action, *args, **kwargs):
     if action == 'post_add' or action == 'post_remove' or action == 'post_clear':
-        print(instance.products.all())
         products = instance.products.all() 
         total = 0 
-    for product in products: 
-        total += product.price 
+        for product in products: 
+            total += product.price 
         if instance.subtotal != total:
             instance.subtotal = total
             instance.save() 

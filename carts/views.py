@@ -15,13 +15,13 @@ def cart_update(request):
         except Product.DoesNotExist:
             return redirect("cart:home")
 
-    product_obj = Product.objects.get(id=product_id)
-    cart_obj, new_obj = Cart.objects.new_or_get(request)
-    cart_obj.products.add(product_obj)
-    #return redirect(product_obj.get_absolute_url()
-    if product_obj in cart_obj.products.all():
-        cart_obj.products.remove(product_obj)
-    else: 
+        product_obj = Product.objects.get(id=product_id)
+        cart_obj, new_obj = Cart.objects.new_or_get(request)
         cart_obj.products.add(product_obj)
+    #return redirect(product_obj.get_absolute_url()
+        if product_obj in cart_obj.products.all():
+            cart_obj.products.remove(product_obj)
+        else: 
+            cart_obj.products.add(product_obj)
     request.session['cart_items'] = cart_obj.products.count()
     return redirect('cart:home')

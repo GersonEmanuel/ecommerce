@@ -21,7 +21,7 @@ class Order(models.Model):
     shipping_total = models.DecimalField(default = 5.99, max_digits = 100, decimal_places = 2)
     # Order total = models.DecimalField(default = 0.00, max_digits = 100, decimal_places = 2)
 
-def pre_save_create_order_id(sender, instance *args, **kwargs):
+def pre_save_create_order_id(sender, instance, *args, **kwargs):
     if not instance.order_id:
         instance.order_id = unique_order_id_generator(instance)
 

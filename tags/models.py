@@ -1,5 +1,5 @@
 from django.db import models
-from ecommerce.utils import unique_slug_generator
+from ecommerce.utils import unique_order_id_generator
 from products.models import Product
 from django.db.models.signals import pre_save
 
@@ -15,6 +15,6 @@ class Tag(models.Model):
 
 def tag_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
-        instance.slug = unique_slug_generator(instance)
+        instance.slug = unique_order_id_generator(instance)
 
 pre_save.connect(tag_pre_save_receiver, sender=Tag)

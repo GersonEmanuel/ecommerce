@@ -9,6 +9,9 @@ from django.utils.http import url_has_allowed_host_and_scheme
 def login_page(request):
     form = LoginForms(request.POST or None)
     context = {'form': form}
+    next_ = request.GET.get('next')
+    next_post = request.POST.get('next')
+    redirect_path = next_ or next_post or None 
     if form.is_valid():
         print(form.cleaned_data)
         username = form.cleaned_data.get("username")
@@ -16,6 +19,8 @@ def login_page(request):
         user = authenticate(request, username=username, password=password) 
         if user is not None:
             login(request, user)
+            if url_has_allowed_host_and_scheme( redirect_path, request.get_host() ):
+                return redirect( redirect_path )
             return redirect('home')
     return render(request, 'auth/login.html', context)
 

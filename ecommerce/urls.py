@@ -2,6 +2,7 @@ from django.conf import settings
 from django.urls import path
 from products.views import *
 from .views import *
+from accounts.views import *
 
 urlpatterns = [
     path('', home_page, name='home'),

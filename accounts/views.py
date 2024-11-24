@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from ecommerce.forms import LoginForms, RegisterForm
+from .forms import LoginForms, RegisterForm
 from django.http import HttpResponse
 from django.utils.http import url_has_allowed_host_and_scheme
 

@@ -1,3 +1,4 @@
+
 {% extends "basef/base.html" %}
 {% block content %}
   <h1>Cart</h1>
@@ -6,8 +7,8 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>Name</th>
-        <th>Price</th>
+        <th>Nome</th>
+        <th>Preço/th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +29,10 @@
       <tr>
         <td colspan="2"></td>
         <td><b>Total</b> {{ cart.total }}</td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td><a class='btn btn-lg btn-success' href='{% url "cart:checkout" %}'>Conferir compra</a></td>
       </tr>
     </tbody>
   </table>
